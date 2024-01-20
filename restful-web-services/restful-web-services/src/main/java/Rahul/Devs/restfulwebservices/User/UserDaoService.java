@@ -24,8 +24,13 @@ public class UserDaoService {
 
     public user findone(int n) {
        
-        return users.stream().filter(usr -> usr.getID()==n).findFirst().get();
+        return users.stream().filter(usr -> usr.getID()==n).findFirst().orElse(null);
     }
+
+    public void DeleteOne(int n) {
+       users.remove(users.stream().filter(usr -> usr.getID()==n).findFirst().orElse(null));
+    }
+     
      
 
     public user postUser( user usr){
